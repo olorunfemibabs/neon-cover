@@ -1,0 +1,41 @@
+
+.trans {
+    display: block;
+    position: relative;
+    padding: 8px;
+  }
+  
+  .trans::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 0;
+    background: #27AE60;
+    transition: height .3s;
+  }
+  
+  .trans:hover::after {
+    height: 100%;
+  }
+  
+
+  .btn {
+    position: absolute;
+    right: 0;
+    top: 4.7rem;
+    border: none;
+    background-color: var(--color-bg);
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform: translateX(50%);
+    font-size: 1.1rem;
+  }
+  
