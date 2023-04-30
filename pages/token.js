@@ -12,7 +12,6 @@ const Token = () => {
     { id: 5, name: "Euro", symbol: "EUR", image: '/public/euro.png' },
   ];
 
-
   
   return (
     <div>
