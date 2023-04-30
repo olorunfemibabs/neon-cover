@@ -52,7 +52,7 @@ const Sidebar = () => {
       ${ toggleCollapse ? "w-20" : "w-1/5"} transition-[width] duration-300 ease-in-out `}>
       <div className='flex flex-col'>
         <div className='flex items-center justify-between relative  px-4 border-b-[1px] border-[#C6C6C6]'>
-          <div className={`flex items-center justify-between gap-6 pt-[42px] pb-[45px] ${toggleCollapse && 'pb-[66px]'}`}>
+          <div className={`flex items-center justify-between gap-6 pt-[42px] pb-[45px] ${toggleCollapse && 'pb-[49px]'}`}>
             <div className=''>
               <ImShield  className={`text-[#FFFFFF] text-[40px] ${toggleCollapse && 'text-[24px]'}`}/>
             </div>
