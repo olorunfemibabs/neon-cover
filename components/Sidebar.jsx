@@ -48,50 +48,50 @@ const Sidebar = () => {
 
   return (
     <div onMouseEnter={onMouseOver} onMouseLeave={onMouseOver}
-     className={`w-1/5 flex flex-col h-screen justify-between px-4 pt-8 pb-4 bg-light
+     className={`w-1/5 flex flex-col h-screen justify-between  pb-4 bg-[#19192E] text-[#8B8B8B]
       ${ toggleCollapse ? "w-20" : "w-1/5"} transition-[width] duration-300 ease-in-out `}>
       <div className='flex flex-col'>
-        <div className='flex items-center justify-between relative'>
-          <div className='flex flex-row items-center justify-between gap-4 ml-1'>
-            <div className='text-[#27AE60] w-4 h-4'>
-              <ImShield />
+        <div className='flex items-center justify-between relative  px-4 border-b-[1px] border-[#C6C6C6]'>
+          <div className={`flex items-center justify-between gap-6 pt-[42px] pb-[45px] ${toggleCollapse && 'pb-[66px]'}`}>
+            <div className=''>
+              <ImShield  className={`text-[#FFFFFF] text-[40px] ${toggleCollapse && 'text-[24px]'}`}/>
             </div>
-            <span className={`mt-2 text-lg font-medium text-[#27AE60] ${toggleCollapse ? "hidden" : ""}`}>Neon.</span>
+            <span className={` text-[30px] font-bold text-[#FFFFFF] ${toggleCollapse ? "hidden" : ""}`}>Neon.</span>
           </div>
 
           {isCollapsible && (
             <button
-              className={` absolute right-0 ${toggleCollapse ? "relative rotate-180" : ""}`}
+              className={` absolute right-4 ${toggleCollapse && "relative rotate-180 left-2 mb-[26px]" }`}
               onClick={handleSidebarToggle}
             >
-              <BsFillArrowLeftCircleFill color="#27AE60" fontSize="1.5rem" />
+              <BsFillArrowLeftCircleFill color="#FFFFFF"  className={`text-1.5rem ${toggleCollapse && 'text-[16px]'}`}/>
             </button>
           )}
 
         </div>
 
-      <ul className='flex flex-col items-start mt-24'>
+      <ul className='flex flex-col items-start mt-4 px-4'>
         {
           menuItems.map(({id, name, link, icon: Icon}) => {
             return (
-              <li key={id} className={`flex flex-row items-center cursor-pointer
-               hover:text-[#27AE60] duration-500 ease-in-out rounded w-full overflow-hidden whitespace-nowrap ${ activeMenu.id == id ?  "text-[#27AE60] border-r-4 border-[#27AE60]" : ""} ${styles.trans}`}>
-                <Link href={link} className="flex flex-row items-center justify-center w-full px-8">
+              <li key={id} className={`cursor-pointer
+               hover:text-[#FFFFFF] mt-8 duration-500 ease-in-out rounded w-full overflow-hidden whitespace-nowrap ${ activeMenu.id == id ?  "text-[#FFFFFF] border-r-4 border-[#FFFFFF]" : ""} ${styles.trans}`}>
+                <Link href={link} className="flex flex-row gap-8 w-full items-center">
                   <span>
-                    <Icon />
+                    <Icon size={20}/>
                   </span>
-                  <span>{name}</span>
+                  <span className={`text-[14px] font-[500] ${toggleCollapse && "hidden"}`}>{name}</span>
                 </Link>
               </li>
             )
           })
         }
       </ul>
-      <ConnectButton />
       </div>
 
       <div>
-        Ⓒ Web3Bridge.
+      <ConnectButton />
+        
       </div>
     </div>
   )
