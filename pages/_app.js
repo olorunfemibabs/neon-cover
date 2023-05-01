@@ -1,31 +1,42 @@
 import '@/styles/globals.css'
 import '@rainbow-me/rainbowkit/styles.css';
+
 import {
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
+import { mainnet, polygon, optimism, arbitrum,sepolia } from 'wagmi/chains';
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import Layout from '@/components/Layout';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum],
+const { chains, provider, webSocketProvider } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, sepolia],
   [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider()
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: `https://eth-sepolia.g.alchemy.com/v2/5ShvcS43c_Wrsfk_jTMZOU0sXXBKaVXP`,
+        WebSocket: `wss://eth-sepolia.g.alchemy.com/v2/5ShvcS43c_Wrsfk_jTMZOU0sXXBKaVXP`,
+      }),
+    }),
   ]
 );
+
 const { connectors } = getDefaultWallets({
-  appName: 'neon-cover',
-  projectId: '45c53b591926db47a0e6f0133b6571ab',
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
   chains
 });
+
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
+  webSocketProvider,
   provider
 })
 
@@ -36,6 +47,7 @@ export default function App({ Component, pageProps }) {
         <RainbowKitProvider chains={chains}>
           <Layout provider={provider}>
             <Component {...pageProps} />
+            <ToastContainer />
           </Layout>
         </RainbowKitProvider>
       </WagmiConfig>

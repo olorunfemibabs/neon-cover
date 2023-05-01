@@ -1,0 +1,906 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "insured",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "PaidInsurance",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "previousAdminRole",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAdminRole",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RoleAdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleGranted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleRevoked",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADMIN_ROLE",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "ArrayPolicyPurchase",
+    "outputs": [
+      { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "PercentageToCover",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "StartTime", "type": "uint256" },
+      { "internalType": "uint256", "name": "EndTime", "type": "uint256" },
+      { "internalType": "uint256", "name": "deductible", "type": "uint256" },
+      { "internalType": "uint256", "name": "AmountPaid", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "CoverageAmount",
+        "type": "uint256"
+      },
+      { "internalType": "address", "name": "Insurer", "type": "address" },
+      { "internalType": "string", "name": "FamilyName", "type": "string" },
+      { "internalType": "bool", "name": "paid", "type": "bool" },
+      {
+        "internalType": "enum NewCoverage.ClaimStatus",
+        "name": "Claim",
+        "type": "uint8"
+      },
+      {
+        "components": [
+          { "internalType": "bool", "name": "Smoke", "type": "bool" },
+          {
+            "internalType": "bool",
+            "name": "FamilyHealthStatus",
+            "type": "bool"
+          },
+          { "internalType": "string[]", "name": "Gender", "type": "string[]" },
+          {
+            "internalType": "string[]",
+            "name": "prescription",
+            "type": "string[]"
+          },
+          { "internalType": "uint256[]", "name": "age", "type": "uint256[]" },
+          {
+            "internalType": "bytes",
+            "name": "FamilyHospital",
+            "type": "bytes"
+          },
+          {
+            "internalType": "string",
+            "name": "PolicyCoverd",
+            "type": "string"
+          },
+          { "internalType": "uint256", "name": "FamilyNo", "type": "uint256" }
+        ],
+        "internalType": "struct NewCoverage.HealthDetail",
+        "name": "detailsOfhealth",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          { "internalType": "bool", "name": "Report", "type": "bool" },
+          {
+            "internalType": "uint256",
+            "name": "AmountToClaim",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ValidateFor",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "Validateagainst",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct NewCoverage.ClaimDetail",
+        "name": "detailsToclaim",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
+      { "internalType": "address", "name": "_tokenDao", "type": "address" }
+    ],
+    "name": "ClaimReward",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "DEFAULT_ADMIN_ROLE",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAJOR_ADMIN",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "admins",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "arrayPolicy",
+    "outputs": [
+      { "internalType": "string", "name": "PolicyName", "type": "string" },
+      { "internalType": "bool", "name": "PolicyActive", "type": "bool" },
+      { "internalType": "bytes", "name": "Agreement", "type": "bytes" },
+      { "internalType": "bytes", "name": "PolicyOffer", "type": "bytes" },
+      { "internalType": "uint256", "name": "MinimumPeriod", "type": "uint256" },
+      { "internalType": "uint256", "name": "MaximumPeriod", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "address", "name": "_tokenDao", "type": "address" }
+    ],
+    "name": "buyToken",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bool", "name": "_report", "type": "bool" },
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "uint256", "name": "_insureId", "type": "uint256" }
+    ],
+    "name": "claimHealthPolicy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_policyName", "type": "string" },
+      {
+        "internalType": "string[]",
+        "name": "_policyOffer",
+        "type": "string[]"
+      },
+      { "internalType": "string[]", "name": "_agreement", "type": "string[]" },
+      {
+        "internalType": "uint256",
+        "name": "_minimumPeriod",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "_maximumPeriod", "type": "uint256" }
+    ],
+    "name": "createInsurancePolicy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "description", "type": "string" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "createProposal",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_startTime", "type": "uint256" },
+      { "internalType": "uint256", "name": "_endTime", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "_amountToInsure",
+        "type": "uint256"
+      }
+    ],
+    "name": "generateHealthPolicy",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllPurchase",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "PercentageToCover",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "StartTime", "type": "uint256" },
+          { "internalType": "uint256", "name": "EndTime", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "deductible",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "AmountPaid",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "CoverageAmount",
+            "type": "uint256"
+          },
+          { "internalType": "address", "name": "Insurer", "type": "address" },
+          { "internalType": "string", "name": "FamilyName", "type": "string" },
+          { "internalType": "bool", "name": "paid", "type": "bool" },
+          {
+            "internalType": "enum NewCoverage.ClaimStatus",
+            "name": "Claim",
+            "type": "uint8"
+          },
+          {
+            "components": [
+              { "internalType": "bool", "name": "Smoke", "type": "bool" },
+              {
+                "internalType": "bool",
+                "name": "FamilyHealthStatus",
+                "type": "bool"
+              },
+              {
+                "internalType": "string[]",
+                "name": "Gender",
+                "type": "string[]"
+              },
+              {
+                "internalType": "string[]",
+                "name": "prescription",
+                "type": "string[]"
+              },
+              {
+                "internalType": "uint256[]",
+                "name": "age",
+                "type": "uint256[]"
+              },
+              {
+                "internalType": "bytes",
+                "name": "FamilyHospital",
+                "type": "bytes"
+              },
+              {
+                "internalType": "string",
+                "name": "PolicyCoverd",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "FamilyNo",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct NewCoverage.HealthDetail",
+            "name": "detailsOfhealth",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              { "internalType": "bool", "name": "Report", "type": "bool" },
+              {
+                "internalType": "uint256",
+                "name": "AmountToClaim",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "ValidateFor",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "Validateagainst",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct NewCoverage.ClaimDetail",
+            "name": "detailsToclaim",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct NewCoverage.PolicyPurchase[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getLatestPrice",
+    "outputs": [{ "internalType": "int256", "name": "", "type": "int256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" }
+    ],
+    "name": "getRoleAdmin",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "hasRole",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "insurePolicy",
+    "outputs": [
+      { "internalType": "string", "name": "PolicyName", "type": "string" },
+      { "internalType": "bool", "name": "PolicyActive", "type": "bool" },
+      { "internalType": "bytes", "name": "Agreement", "type": "bytes" },
+      { "internalType": "bytes", "name": "PolicyOffer", "type": "bytes" },
+      { "internalType": "uint256", "name": "MinimumPeriod", "type": "uint256" },
+      { "internalType": "uint256", "name": "MaximumPeriod", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_daoFee", "type": "uint256" },
+      { "internalType": "address", "name": "_tokenContract", "type": "address" }
+    ],
+    "name": "joinDAO",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
+      { "internalType": "address", "name": "_tokenDAO", "type": "address" }
+    ],
+    "name": "payInsurance",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "policyBought",
+    "outputs": [
+      { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "PercentageToCover",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "StartTime", "type": "uint256" },
+      { "internalType": "uint256", "name": "EndTime", "type": "uint256" },
+      { "internalType": "uint256", "name": "deductible", "type": "uint256" },
+      { "internalType": "uint256", "name": "AmountPaid", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "CoverageAmount",
+        "type": "uint256"
+      },
+      { "internalType": "address", "name": "Insurer", "type": "address" },
+      { "internalType": "string", "name": "FamilyName", "type": "string" },
+      { "internalType": "bool", "name": "paid", "type": "bool" },
+      {
+        "internalType": "enum NewCoverage.ClaimStatus",
+        "name": "Claim",
+        "type": "uint8"
+      },
+      {
+        "components": [
+          { "internalType": "bool", "name": "Smoke", "type": "bool" },
+          {
+            "internalType": "bool",
+            "name": "FamilyHealthStatus",
+            "type": "bool"
+          },
+          { "internalType": "string[]", "name": "Gender", "type": "string[]" },
+          {
+            "internalType": "string[]",
+            "name": "prescription",
+            "type": "string[]"
+          },
+          { "internalType": "uint256[]", "name": "age", "type": "uint256[]" },
+          {
+            "internalType": "bytes",
+            "name": "FamilyHospital",
+            "type": "bytes"
+          },
+          {
+            "internalType": "string",
+            "name": "PolicyCoverd",
+            "type": "string"
+          },
+          { "internalType": "uint256", "name": "FamilyNo", "type": "uint256" }
+        ],
+        "internalType": "struct NewCoverage.HealthDetail",
+        "name": "detailsOfhealth",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          { "internalType": "bool", "name": "Report", "type": "bool" },
+          {
+            "internalType": "uint256",
+            "name": "AmountToClaim",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ValidateFor",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "Validateagainst",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct NewCoverage.ClaimDetail",
+        "name": "detailsToclaim",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_newAdmin", "type": "address" }
+    ],
+    "name": "registerAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "_percentageToCover",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "_familyNo", "type": "uint256" },
+      { "internalType": "uint256[]", "name": "_age", "type": "uint256[]" },
+      { "internalType": "bool", "name": "_familyHealthStatus", "type": "bool" },
+      { "internalType": "bool", "name": "_smoke", "type": "bool" },
+      { "internalType": "string", "name": "_familyName", "type": "string" }
+    ],
+    "name": "registerPolicy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "renounceRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "returnProposals",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "id", "type": "uint256" },
+          { "internalType": "uint256", "name": "amount", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "livePeriod",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "votesFor", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "votesAgainst",
+            "type": "uint256"
+          },
+          { "internalType": "bytes", "name": "description", "type": "bytes" },
+          { "internalType": "bool", "name": "votingPassed", "type": "bool" },
+          { "internalType": "bool", "name": "paid", "type": "bool" },
+          { "internalType": "address", "name": "proposer", "type": "address" },
+          { "internalType": "address", "name": "paidBy", "type": "address" },
+          {
+            "internalType": "address",
+            "name": "AdminPaidTo",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct NewCoverage.DAOProposal[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "revokeRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+    ],
+    "name": "setDAOFee",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "showAdmins",
+    "outputs": [
+      { "internalType": "address[]", "name": "", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "proposalId", "type": "uint256" }
+    ],
+    "name": "showVoteRecords",
+    "outputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" }
+    ],
+    "name": "supportsInterface",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "userGetPolicyPurchases",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "PercentageToCover",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "StartTime", "type": "uint256" },
+          { "internalType": "uint256", "name": "EndTime", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "deductible",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "AmountPaid",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "CoverageAmount",
+            "type": "uint256"
+          },
+          { "internalType": "address", "name": "Insurer", "type": "address" },
+          { "internalType": "string", "name": "FamilyName", "type": "string" },
+          { "internalType": "bool", "name": "paid", "type": "bool" },
+          {
+            "internalType": "enum NewCoverage.ClaimStatus",
+            "name": "Claim",
+            "type": "uint8"
+          },
+          {
+            "components": [
+              { "internalType": "bool", "name": "Smoke", "type": "bool" },
+              {
+                "internalType": "bool",
+                "name": "FamilyHealthStatus",
+                "type": "bool"
+              },
+              {
+                "internalType": "string[]",
+                "name": "Gender",
+                "type": "string[]"
+              },
+              {
+                "internalType": "string[]",
+                "name": "prescription",
+                "type": "string[]"
+              },
+              {
+                "internalType": "uint256[]",
+                "name": "age",
+                "type": "uint256[]"
+              },
+              {
+                "internalType": "bytes",
+                "name": "FamilyHospital",
+                "type": "bytes"
+              },
+              {
+                "internalType": "string",
+                "name": "PolicyCoverd",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "FamilyNo",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct NewCoverage.HealthDetail",
+            "name": "detailsOfhealth",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              { "internalType": "bool", "name": "Report", "type": "bool" },
+              {
+                "internalType": "uint256",
+                "name": "AmountToClaim",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "ValidateFor",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "Validateagainst",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct NewCoverage.ClaimDetail",
+            "name": "detailsToclaim",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct NewCoverage.PolicyPurchase[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
+      { "internalType": "address", "name": "_rewardee", "type": "address" },
+      { "internalType": "bool", "name": "_validate", "type": "bool" }
+    ],
+    "name": "validateClaim",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_admin", "type": "address" }
+    ],
+    "name": "verifyAdmin",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "proposalId", "type": "uint256" },
+      { "internalType": "bool", "name": "supportProposal", "type": "bool" }
+    ],
+    "name": "vote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "address", "name": "_to", "type": "address" }
+    ],
+    "name": "withdrawEther",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "address", "name": "_daoToken", "type": "address" },
+      { "internalType": "address", "name": "_to", "type": "address" }
+    ],
+    "name": "withdrawToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  { "stateMutability": "payable", "type": "receive" }
+]

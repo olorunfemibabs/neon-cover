@@ -1,8 +1,13 @@
 import React from 'react'
+import MajorCover from './component/MajorCover'
+import Policy from './component/Policy'
 
 const HomeFeatures = () => {
   return (
-    <main className=''>HomeFeatures</main>
+    <main className=''>
+      <MajorCover/>
+      <Policy/>
+    </main>
   )
 }
 

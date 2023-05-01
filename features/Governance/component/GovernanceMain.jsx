@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsXbox, BsYelp } from "react-icons/bs";
+import CreateCover from './CreateCover';
 
 const GovernanceMain = () => {
+  const [close, setClose] = useState(false)
   return (
     <main>
       <section className='flex justify-between mt-4'>
-<div className="w-[48%] border-[1px] rounded-lg h-[144px] bg-[#19192E] cursor-pointer hover:text-[#EEEEEE]">
+<div onClick={()=>setClose(true)} className="w-[48%] border-[1px] rounded-lg h-[144px] bg-[#19192E] cursor-pointer hover:text-[#EEEEEE]">
   <div className="w-[90%] mx-auto pt-6 flex items-center">
 <div className="w-[80px] h-[80px] border-[1px] px-auto rounded-lg bg-[#FFFFFF]">
 
@@ -34,6 +36,10 @@ const GovernanceMain = () => {
 </div>
 
       </section>
+{
+  close &&
+      <CreateCover close={() => setClose(false)}/>
+}
     </main>
   )
 }
