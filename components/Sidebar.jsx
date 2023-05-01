@@ -23,7 +23,7 @@ const Sidebar = () => {
   const [isCollapsible, setIsCollapsible] = useState(false);
 
     let menuItems = [
-      { id: 1, name: "Home", link: "/", icon: MdHome },
+      { id: 1, name: "Dashboard", link: "/dashboard", icon: MdHome },
       { id: 2, name: "Insurance", link: "/insurance", icon: SiAdguard },
       { id: 3, name: "Invest", link: "/invest", icon: GiPiggyBank },
       { id: 4, name: "Governance", link: "/governance", icon: RiGovernmentFill },

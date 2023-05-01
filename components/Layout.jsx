@@ -1,7 +1,21 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Sidebar from "./Sidebar";
 
 const Layout = ({ children }) => {
+
+  const router = useRouter();
+
+  if(router.pathname === '/') {
+    //return the content for the landing page
+    return(
+      <div>
+        Welcome to the landing page
+      </div>
+    );
+  }
+
+  //return the content for the other pages
   return (
     <div className="h-screen flex flex-row justify-start bg-[#19192E]">
       <Sidebar />
@@ -13,3 +27,4 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
