@@ -11,23 +11,24 @@ const TokenForm = () => {
   ]
 
   return (
-    <div>
-    <div className='flex flex-col flex-1 h-full'>
+    <div className='flex flex-1 items-start justify-start flex-col px-6 w-full h-full '>
+    <div className='flex flex-col flex-1 h-full '>
     <form>
 
       <div className=' flex flex-col'>
-        <span className=' ml-10 font-semibold text-black
-        text-xl'>Buy</span>
-        <div className='border-b-4 border-[#19192E] w-1/5 mt-2'/>
+        <span className=' ml-3 font-semibold font-poppins text-[#19192E]text-xl'>
+          Buy
+      </span>
+        <div className='border-b-2 border-[#19192E] w-2/5 mt-1'/>
       </div>
 
-      <div className='relative mt-12 w-full h-full'>
-        <div className='bg-[#FAFAFA] w-4/5 h-fit mt-6 cursor-pointer p-4 rounded-3xl hover:border-[1px] border-[#19192E] ease-in-out duration-100'>
-          <div className='flex flex-col'>
-            <span className='text-black'>Spend</span>
-              <div className='flex flex-row items-center justify-between'>
+      <div className='mt-6 w-full h-full shadow-xl p-6'>
+        <div className='bg-[#FAFAFA] w-full h-full mt-6 cursor-pointer p-4 rounded-3xl hover:border-[1px] border-[#19192E] ease-in-out duration-100'>
+          <div className='flex flex-col items-center justify-center'>
+            <span className='text-[#19192E]'>Spend</span>
+              <div className='flex flex-row items-center justify-between mt-2'>
                 <div>
-                  <input placeholder='Type amount' className='border-none outline-none p-1' />
+                  <input placeholder='Type amount' type='number' className='border-none outline-none p-1 bg-[#FAFAFA] text-[#19192E]' />
                 </div>
 
                 <div>
@@ -50,12 +51,12 @@ const TokenForm = () => {
           </div>
         </div>
 
-        <div className='bg-[#FAFAFA] w-4/5 h-fit mt-6 cursor-pointer p-4 rounded-3xl hover:border-[1px] border-[#19192E] ease-in-out duration-100 '>
-          <div className='flex flex-col'>
-            <span className='text-black'>Receive</span>
-            <div className='flex flex-row items-center justify-between mt-4'>
+        <div className='bg-[#FAFAFA] w-full h-full mt-6 cursor-pointer p-4 rounded-3xl hover:border-[1px] border-[#19192E] ease-in-out duration-100'>
+          <div className='flex flex-col items-center justify-center'>
+            <span className='text-[#19192E]'>Receive</span>
+            <div className='flex flex-row items-center justify-between mt-2'>
               <div>
-                <input placeholder='Type amount' className='border-none outline-none p-1' />
+                <input placeholder='Type amount' type='number' className='border-none outline-none p-1 bg-[#FAFAFA] text-[#19192E]' />
               </div>
               <div>
                 <div>

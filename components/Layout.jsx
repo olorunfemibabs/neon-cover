@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Sidebar from "./Sidebar";
+import LandingPage from "./LandingPage";
 
 const Layout = ({ children }) => {
 
@@ -10,7 +11,7 @@ const Layout = ({ children }) => {
     //return the content for the landing page
     return(
       <div>
-        Welcome to the landing page
+        <LandingPage />
       </div>
     );
   }

@@ -4,7 +4,7 @@ import TokenForm from './components/TokenForm'
 
 const TokenFeatures = () => {
   return (
-    <div className='flex flex-row items-center justify-between mt-4'>
+    <div className='flex md:flex-row flex-col items-center justify-between py-6 px-6'>
       <TokenDesc />
       <TokenForm />
     </div>
