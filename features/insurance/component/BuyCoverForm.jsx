@@ -6,6 +6,7 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 import ABI from "../../../utils/ABI/ABI.json";
+import Loading from "@/components/Loading";
 
 const BuyCoverForm = (props) => {
   const policyContract = "0x2fdfAe4285260160d2FdFC114a00Bcd61a25760A";
