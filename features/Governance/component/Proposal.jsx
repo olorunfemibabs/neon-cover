@@ -3,6 +3,7 @@ import { InsuranceAddr } from '@/utils/contractAddr'
 import ABI from "../../../utils/ABI/ABI.json"
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi'
 import Loading from '@/components/Loading'
+import { toast } from 'react-toastify'
 
 const Proposal = (props) => {
   const[votefor, setVotefor]=useState(false)
@@ -27,29 +28,38 @@ const Proposal = (props) => {
   const { data:voteWaitdata, isError:voteWaitIsError, isLoading:voteWaitisLoading } = useWaitForTransaction({
     hash: data?.hash,
     onSuccess:()=>{
-        toast.success("Insurance policy created")
-        setMaxPeriod(0)
-        setMiniPeriod(0)
-        setPolicyOffer([])
-        setAgreement([])
-        setPolicyName("")
-        props.close()
+        toast.success("Vote succesful")
+
     }
   })
+  const { data:voteWaitAgainstdata, isError:voteWaitAgainstIsError, isLoading:voteWaitAgainstisLoading } = useWaitForTransaction({
+    hash: voteAgainstData?.hash,
+    onSuccess:()=>{
+        toast.success("Vote succesful")
+
+    }
+  })
+
   useEffect(()=>{
   if(isError){
     toast.error(error)
   }
-  if(voteAgainstIserror){
-
+  if(voteWaitIsError){
+toast.error("error occured make sure you are an admin")
     console.log("ewe",voteAgainsterror);
   }
+  if(voteWaitAgainstIsError){
+    toast.error("error occured make sure you are an admin")
+  }
+  if(isLoading || voteAgainstIsLoading || voteWaitisLoading || voteWaitAgainstisLoading){
+    toast.info("Loading")
+  }
   
-},[isError,error])
+},[isError,error, voteWaitIsError])
 
   return (
     <div className='w-[100%] pb-4 border-[1px] rounded-lg'>
-      {isLoading || voteAgainstIsLoading || voteWaitisLoading && <Loading/>}
+    
     <div className=" w-[96%] flex items-center pt-4 mx-auto">
         <div className="w-[80%]">
 
