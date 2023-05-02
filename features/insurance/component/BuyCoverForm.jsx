@@ -10,6 +10,13 @@ const BuyCoverForm = (props) => {
     
         setAge([...age, newfield])
     }
+
+    const handleFormChange = (index, event) => {
+
+        let data = [...age];
+        data[index][event.target.name] = event.target.value;
+        setAge(data);
+     }
     const removeFields = (index) => {
         // e.preventDefault()
         let data = [...age];
@@ -17,7 +24,7 @@ const BuyCoverForm = (props) => {
         setAge(data)
     }
   return (
-    <div className='fixed top-0 w-[100%] ' onClick={props.close}>
+    <div className='fixed top-0 w-[100%] ' >
         <div className="w-[60%] ml-14 bg-white mt-10 rounded-lg">
             <div className="w-[90%] mx-auto pt-[54px] pb-[54px]">
                 <div className="flex justify-between items-center">
@@ -99,25 +106,24 @@ const BuyCoverForm = (props) => {
                     </div>
                     </div>
                     <div className="flex flex-wrap gap-4 mt-4">
-                    <div  className="w-[20%]">
-                        <label className='text-[16px] font-[400] leading-5'>Ages</label> <br/>
-                        <input type="text" className='h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2' />
-                    </div>
-                    {age.map((input, index) => {
-                        return(
-<div className="flex items-center gap-1 ">
+                    {age.length > 0 && (<>
+                    {age.map((input, index) => (
+<div key={index} className="flex items-center gap-1 ">
 
-    <div key={index} className="w-[100px]">
+    <div  className="w-[100px]">
         <label className='text-[16px] font-[400] leading-5'>Ages</label> <br/>
-        <input type="text" className='h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2' />
+        <input type="text" 
+         onChange={(event) => handleFormChange(index, event)}
+        className='h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2' />
 </div>
 <button className='text-[32px] h-[50px] pt-4 font-bold' onClick={(e) => {e.preventDefault();
 removeFields(index)}}>-</button>
                     </div>
                         
                         )
-                    })}
-
+                    )}
+                    </>
+)}
                     </div>
 <button className="text-[16px] font-semibold mt-2" onClick={addFields}>+ Ages..</button>
 
