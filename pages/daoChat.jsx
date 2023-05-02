@@ -1,3 +1,5 @@
+import TopBar from '@/components/TopBar'
+import HomeFeatures from '@/features/Home/HomeFeatures'
 import { Client } from '@xmtp/xmtp-js'
 import { useAccount } from 'wagmi'
 

@@ -39,7 +39,7 @@ const Sidebar = () => {
 
     const activeMenu = useMemo(
       () => menuItems.find((menu) => menu.link === router.pathname),
-      [router.pathname]
+      [router.pathname, menuItems]
     );
 
     const handleSidebarToggle = () => {
