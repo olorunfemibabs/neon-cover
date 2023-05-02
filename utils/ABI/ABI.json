@@ -645,6 +645,35 @@
   },
   {
     "inputs": [],
+    "name": "returnAllPolicies",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "PolicyName", "type": "string" },
+          { "internalType": "bool", "name": "PolicyActive", "type": "bool" },
+          { "internalType": "bytes", "name": "Agreement", "type": "bytes" },
+          { "internalType": "bytes", "name": "PolicyOffer", "type": "bytes" },
+          {
+            "internalType": "uint256",
+            "name": "MinimumPeriod",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "MaximumPeriod",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct NewCoverage.InsurancePolicy[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "returnProposals",
     "outputs": [
       {

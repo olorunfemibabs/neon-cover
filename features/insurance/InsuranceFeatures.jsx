@@ -10,7 +10,6 @@ const InsuranceFeatures = () => {
     <div className=' flex justify-between gap-8 flex-wrap mt-4'>
     
       <SingleInsureCard open={()=>setOpenBuyCover(true)}/>
-      <SingleInsureCard open={()=>setOpenBuyCover(true)}/>
      
     </div>
     {

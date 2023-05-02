@@ -78,7 +78,7 @@ if(isError){
 }
   },[ isError])
   return (
-    <div className="fixed top-0 w-[100%] " onClick={props.close}>
+    <div className="fixed top-0 w-[100%] ">
         {coverIsLoading || isLoading  && <Loading/>}
       <div className="w-[60%] ml-14 bg-white mt-10 rounded-lg">
         <div className="w-[90%] mx-auto pt-[54px] pb-[54px]">
