@@ -1,8 +1,58 @@
 import React, { useState } from 'react'
 import {AiOutlineCloseCircle} from "react-icons/ai"
+import { usePrepareContractWrite, useContractWrite, useWaitForTransaction } from 'wagmi';
+import ABI from "";
+
 
 const BuyCoverForm = (props) => {
-    const [age, setAge] = useState([ ])
+    const policyContract = '0xfD03AF93eEc516Feeee0eAdF65798e143C54F2A0';
+    const [age, setAge] = useState([ ]);
+    const [insureId, setInsureId] = useState(null);
+    const [percentageToCover, setPercentageToCover ] = useState(null);
+    const [familyNo, setFamilyNo ] = useState(null);
+    const [familyHealthStatus, setFamilyHealthStatus] = useState(false);
+    const [smoke, setSmoke ] = useState(false);
+    const [familyName, setFamilyName ] = useState("");
+
+
+    const { config: config1 } = usePrepareContractWrite({
+        address: policyContract,
+        abi: ABI,
+        functionName: 'registerPolicy',
+        args: [
+            insureId,
+            percentageToCover,
+            familyNo,
+            age,
+            familyHealthStatus,
+            smoke,
+            familyName,
+        ],
+    });
+
+    const {
+        data: registerPolicyData,
+        isLoading:registerPolicyIsLoading,
+        write: register,
+    } = useContractWrite(config1);
+
+    const { data: registerWaitData, isLoading: registerWaitIsLoading } = useWaitForTransaction({
+        data: registerPolicyData?.hash,
+
+        onSuccess(data) {
+            console.log('Insurance registration successful: ', data);
+        },
+
+        onError(error) {
+            console.log('Error: ', error);
+        },
+    })
+
+    const handleSubmit = () => {
+        e.preventDefault();
+
+        register?.();
+    }
 
     const addFields = (e) => {
         e.preventDefault()
@@ -17,7 +67,7 @@ const BuyCoverForm = (props) => {
         setAge(data)
     }
   return (
-    <div className='fixed top-0 w-[100%] ' onClick={props.close}>
+    <div className='fixed top-0 w-[100%] '>
         <div className="w-[60%] ml-14 bg-white mt-10 rounded-lg">
             <div className="w-[90%] mx-auto pt-[54px] pb-[54px]">
                 <div className="flex justify-between items-center">
@@ -31,7 +81,7 @@ const BuyCoverForm = (props) => {
                     </div>
                     <AiOutlineCloseCircle size={20} className='text-[#7C7B7B] cursor-pointer' onClick={props.close}/>
                 </div>
-                <form >
+                <form onSubmit={handleSubmit}>
                     <div className="flex justify-between mt-5">
 
                     <div className="w-[48%]">
