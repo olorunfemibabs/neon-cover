@@ -9,6 +9,7 @@ import ABI from "../../../utils/ABI/ABI.json";
 
 const BuyCoverForm = (props) => {
   const policyContract = "0x2fdfAe4285260160d2FdFC114a00Bcd61a25760A";
+  const _insureId = props.getData;
   const [age, setAge] = useState([]);
   const [insureId, setInsureId] = useState(0);
   const [percentageToCover, setPercentageToCover] = useState(0);
@@ -22,7 +23,7 @@ const BuyCoverForm = (props) => {
     abi: ABI,
     functionName: "registerPolicy",
     args: [
-      1,
+      _insureId,
       percentageToCover,
       familyNo,
       age,
