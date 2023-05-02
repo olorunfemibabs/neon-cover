@@ -242,6 +242,7 @@
     "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "name": "arrayPolicy",
     "outputs": [
+      { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
       { "internalType": "string", "name": "PolicyName", "type": "string" },
       { "internalType": "bool", "name": "PolicyActive", "type": "bool" },
       { "internalType": "bytes", "name": "Agreement", "type": "bytes" },
@@ -275,6 +276,7 @@
   },
   {
     "inputs": [
+      { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
       { "internalType": "string", "name": "_policyName", "type": "string" },
       {
         "internalType": "string[]",
@@ -472,6 +474,7 @@
     "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "name": "insurePolicy",
     "outputs": [
+      { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
       { "internalType": "string", "name": "PolicyName", "type": "string" },
       { "internalType": "bool", "name": "PolicyActive", "type": "bool" },
       { "internalType": "bytes", "name": "Agreement", "type": "bytes" },
@@ -641,6 +644,36 @@
     "name": "renounceRole",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "returnAllPolicies",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+          { "internalType": "string", "name": "PolicyName", "type": "string" },
+          { "internalType": "bool", "name": "PolicyActive", "type": "bool" },
+          { "internalType": "bytes", "name": "Agreement", "type": "bytes" },
+          { "internalType": "bytes", "name": "PolicyOffer", "type": "bytes" },
+          {
+            "internalType": "uint256",
+            "name": "MinimumPeriod",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "MaximumPeriod",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct NewCoverage.InsurancePolicy[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {

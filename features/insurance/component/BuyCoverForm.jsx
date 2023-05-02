@@ -8,7 +8,7 @@ import {
 import ABI from "../../../utils/ABI/ABI.json";
 
 const BuyCoverForm = (props) => {
-  const policyContract = "0xfD03AF93eEc516Feeee0eAdF65798e143C54F2A0";
+  const policyContract = "0x29452386ceED8EdEff77B56a956A3c5E7ee9703c";
   const [age, setAge] = useState([]);
   const [insureId, setInsureId] = useState(null);
   const [percentageToCover, setPercentageToCover] = useState(null);
