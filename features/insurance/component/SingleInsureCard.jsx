@@ -19,7 +19,7 @@ const SingleInsureCard = ({ open, ongetData }) => {
   });
   const handleClick = (policy) => {
     open();
-    ongetData("1");
+    ongetData(policy.InsureId);
   };
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const SingleInsureCard = ({ open, ongetData }) => {
   // }
 
   return (
-    <div className="relative w-full flex flex-row flex-wrap justify-evenly">
-      {policyListed.map((policy, index) => {
+    <div className="relative w-full flex flex-row flex-wrap justify-between">
+      {policies.map((policy, index) => {
         return (
           <div
             key={index}
@@ -61,7 +61,7 @@ const SingleInsureCard = ({ open, ongetData }) => {
             >
               Buy Cover
             </button>
-            <p>{Number(policy.InsureId)}</p>
+            {/* <p>{Number(policy.InsureId)}</p> */}
           </div>
         );
       })}

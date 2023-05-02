@@ -14,7 +14,8 @@ const InsuranceFeatures = () => {
   };
   return (
     <main className="w-[100%]">
-      <div className=" flex justify-between gap-8 flex-wrap mt-4">
+      <div className=" flex gap-8 flex-wrap mt-4">
+      
         <SingleInsureCard
           open={() => setOpenBuyCover(true)}
           ongetData={getDataHandler}
