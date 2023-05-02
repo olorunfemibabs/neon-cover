@@ -32,6 +32,12 @@ const CreateCover = (props) => {
     hash: coverData?.hash,
     onSuccess:()=>{
         toast.success("Insurance policy created")
+        setMaxPeriod(0)
+        setMiniPeriod(0)
+        setPolicyOffer([])
+        setAgreement([])
+        setPolicyName("")
+        props.close()
     }
   })
 
