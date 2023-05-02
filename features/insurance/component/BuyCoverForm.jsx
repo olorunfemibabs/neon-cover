@@ -10,9 +10,9 @@ import ABI from "../../../utils/ABI/ABI.json";
 const BuyCoverForm = (props) => {
   const policyContract = "0x2fdfAe4285260160d2FdFC114a00Bcd61a25760A";
   const [age, setAge] = useState([]);
-  const [insureId, setInsureId] = useState(null);
-  const [percentageToCover, setPercentageToCover] = useState(null);
-  const [familyNo, setFamilyNo] = useState(null);
+  const [insureId, setInsureId] = useState(0);
+  const [percentageToCover, setPercentageToCover] = useState(0);
+  const [familyNo, setFamilyNo] = useState(0);
   const [familyHealthStatus, setFamilyHealthStatus] = useState(false);
   const [smoke, setSmoke] = useState(false);
   const [familyName, setFamilyName] = useState("");
@@ -22,7 +22,7 @@ const BuyCoverForm = (props) => {
     abi: ABI,
     functionName: "registerPolicy",
     args: [
-      insureId,
+      1,
       percentageToCover,
       familyNo,
       age,
@@ -208,6 +208,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                 />
               </div>
+              
               {age.map((input, index) => {
                 return (
                   <div className="flex items-center gap-1 ">
