@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContractRead } from 'wagmi';
 import {InsuranceAddr} from "../../../utils/contractAddr";
 import ABI from "../../../utils/ABI/ABI.json"
 
 const GeneratedPolicy = () => {
-    const { data, isError, isLoading } = useContractRead({
+    const[da, setDa] = useState([])
+    const { data: ddd, isError, isLoading } = useContractRead({
         address: InsuranceAddr,
         abi: ABI,
-        functionName: "userGetPolicyPurchases ",
-        cacheOnBlock: true,
+        functionName: "userGetPolicyPurchases",
+        args:[],
+        // cacheOnBlock: true,
       });
 
-      console.log(data);
+      console.log(da);
+useEffect(()=>{
+setDa(ddd)
+console.log('ll',ddd);
+},[ddd])
   return (
     <div>GeneratedPolicy</div>
   )

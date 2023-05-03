@@ -33,7 +33,7 @@ const SingleInsureCard = ({ open, ongetData }) => {
 
   return (
     <div className="relative w-full flex flex-row flex-wrap justify-between">
-      {policies.map((policy, index) => {
+      {policies?.map((policy, index) => {
         return (
           <div
             key={index}
