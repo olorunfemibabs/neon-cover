@@ -127,6 +127,7 @@
     "name": "ArrayPolicyPurchase",
     "outputs": [
       { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+      { "internalType": "uint256", "name": "Trackedindex", "type": "uint256" },
       {
         "internalType": "uint256",
         "name": "PercentageToCover",
@@ -314,7 +315,8 @@
         "internalType": "uint256",
         "name": "_amountToInsure",
         "type": "uint256"
-      }
+      },
+      { "internalType": "uint256", "name": "_trackedindex", "type": "uint256" }
     ],
     "name": "generateHealthPolicy",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
@@ -328,6 +330,11 @@
       {
         "components": [
           { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "Trackedindex",
+            "type": "uint256"
+          },
           {
             "internalType": "uint256",
             "name": "PercentageToCover",
@@ -503,6 +510,7 @@
   },
   {
     "inputs": [
+      { "internalType": "uint256", "name": "_trackedindex", "type": "uint256" },
       { "internalType": "uint256", "name": "_amount", "type": "uint256" },
       { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
       { "internalType": "address", "name": "_tokenDAO", "type": "address" }
@@ -520,6 +528,7 @@
     "name": "policyBought",
     "outputs": [
       { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+      { "internalType": "uint256", "name": "Trackedindex", "type": "uint256" },
       {
         "internalType": "uint256",
         "name": "PercentageToCover",
@@ -780,6 +789,11 @@
       {
         "components": [
           { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "Trackedindex",
+            "type": "uint256"
+          },
           {
             "internalType": "uint256",
             "name": "PercentageToCover",

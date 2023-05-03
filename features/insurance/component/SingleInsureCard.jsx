@@ -4,10 +4,7 @@ import { defaultAbiCoder } from "ethers/lib/utils";
 import single from "../styles/single.module.css";
 
 const SingleInsureCard = ({ open, ongetData, policy }) => {
-  // const [data, setData] =useState("")
 
-  // const handleClick = () => ( policyListed.map(policy) => {})
-  // }
 
   const handleClick = (policy) => {
     open();
