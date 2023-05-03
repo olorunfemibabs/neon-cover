@@ -171,10 +171,10 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setPercentageToCover(e.target.value)}
                 >
-                  <option value="">40%</option>
-                  <option value="">60%</option>
-                  <option value="">80%</option>
-                  <option value="">100%</option>
+                  <option value="">40</option>
+                  <option value="">60</option>
+                  <option value="">80</option>
+                  <option value="">100</option>
                 </select>
               </div>
               <div className="w-[48%]">
