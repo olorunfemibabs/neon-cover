@@ -276,7 +276,6 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
       { "internalType": "string", "name": "_policyName", "type": "string" },
       {
         "internalType": "string[]",
