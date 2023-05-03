@@ -772,7 +772,9 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      { "internalType": "address", "name": "_insuredAcct", "type": "address" }
+    ],
     "name": "userGetPolicyPurchases",
     "outputs": [
       {
