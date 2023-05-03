@@ -1,2 +1,2 @@
-export const InsuranceAddr = "0xf461B2Fa19Bad5152a0a48Ebff4dA539f025FbAe";
+export const InsuranceAddr = "0x50F3058Ec813c79b824644Db7102b0C80728A982";
 

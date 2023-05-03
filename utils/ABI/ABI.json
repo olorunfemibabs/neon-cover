@@ -127,6 +127,7 @@
     "name": "ArrayPolicyPurchase",
     "outputs": [
       { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+      { "internalType": "uint256", "name": "Trackedindex", "type": "uint256" },
       {
         "internalType": "uint256",
         "name": "PercentageToCover",
@@ -314,7 +315,8 @@
         "internalType": "uint256",
         "name": "_amountToInsure",
         "type": "uint256"
-      }
+      },
+      { "internalType": "uint256", "name": "_trackedindex", "type": "uint256" }
     ],
     "name": "generateHealthPolicy",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
@@ -328,6 +330,11 @@
       {
         "components": [
           { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "Trackedindex",
+            "type": "uint256"
+          },
           {
             "internalType": "uint256",
             "name": "PercentageToCover",
@@ -520,6 +527,7 @@
     "name": "policyBought",
     "outputs": [
       { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+      { "internalType": "uint256", "name": "Trackedindex", "type": "uint256" },
       {
         "internalType": "uint256",
         "name": "PercentageToCover",
@@ -780,6 +788,11 @@
       {
         "components": [
           { "internalType": "uint256", "name": "InsureId", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "Trackedindex",
+            "type": "uint256"
+          },
           {
             "internalType": "uint256",
             "name": "PercentageToCover",
