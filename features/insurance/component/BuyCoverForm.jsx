@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import {
   usePrepareContractWrite,
@@ -6,25 +6,27 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 import ABI from "../../../utils/ABI/ABI.json";
+import {InsuranceAddr} from "../../../utils/contractAddr"
 import Loading from "@/components/Loading";
 
 const BuyCoverForm = (props) => {
-  const policyContract = "0x2fdfAe4285260160d2FdFC114a00Bcd61a25760A";
-  const _insureId = props.getData;
-  const [age, setAge] = useState([]);
-  const [insureId, setInsureId] = useState(0);
+
+  const _insureId = Number(props.getData);
+  const [age, setAge] = useState([
+
+  ]);
   const [percentageToCover, setPercentageToCover] = useState(0);
   const [familyNo, setFamilyNo] = useState(0);
-  const [familyHealthStatus, setFamilyHealthStatus] = useState(false);
-  const [smoke, setSmoke] = useState(false);
+  const [familyHealthStatus, setFamilyHealthStatus] = useState(true);
+  const [smoke, setSmoke] = useState(true);
   const [familyName, setFamilyName] = useState("");
 
   const { config: config1 } = usePrepareContractWrite({
-    address: policyContract,
+    address: InsuranceAddr,
     abi: ABI,
     functionName: "registerPolicy",
     args: [
-      _insureId,
+        _insureId,
       percentageToCover,
       familyNo,
       age,
@@ -55,20 +57,26 @@ const BuyCoverForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    register?.();
+console.log( 'aa', _insureId,
+    percentageToCover,
+    familyNo,
+    age,
+    familyHealthStatus,
+    smoke,
+    familyName)
+    register();
   };
 
   const addFields = (e) => {
     e.preventDefault();
-    let newfield = { age: "" };
+   
 
-    setAge([...age, newfield]);
+    setAge([...age, ""]);
   };
 
   const handleFormChange = (index, event) => {
     let data = [...age];
-    data[index][event.target.name] = event.target.value;
+    data[index] = event.target.value;
     setAge(data);
   }
 
@@ -78,6 +86,9 @@ const BuyCoverForm = (props) => {
     data.splice(index, 1);
     setAge(data);
   };
+  useEffect(() => {
+    setAge([""]); // Add initial email when component mounts
+  }, []);
   return (
     <div className="fixed top-0 w-[100%] ">
       <div className="w-[60%] ml-14 bg-white mt-10 rounded-lg">
@@ -119,11 +130,12 @@ const BuyCoverForm = (props) => {
                 <select
                   name=""
                   id=""
+                //   value={}
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                 >
-                  <option value="">Single</option>
-                  <option value="">Nuclear Family</option>
-                  <option value="">Extended Family</option>
+                  <option value="Single">Single</option>
+                  <option value="Nuclear Family">Nuclear Family</option>
+                  <option value="Extended Family">Extended Family</option>
                 </select>
               </div>
             </div>
@@ -136,11 +148,12 @@ const BuyCoverForm = (props) => {
                 <select
                   name=""
                   id=""
+                  value={smoke}
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setSmoke(e.target.value)}
                 >
-                  <option value="">Yes</option>
-                  <option value="">No</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
                 </select>
               </div>
               <div className="w-[48%]">
@@ -151,11 +164,12 @@ const BuyCoverForm = (props) => {
                 <select
                   name=""
                   id=""
+                  value={familyHealthStatus}
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setFamilyHealthStatus(e.target.value)}
                 >
-                  <option value="">Yes</option>
-                  <option value="">No</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
                 </select>
               </div>
             </div>
@@ -168,13 +182,14 @@ const BuyCoverForm = (props) => {
                 <select
                   name=""
                   id=""
+                  value={percentageToCover}
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setPercentageToCover(e.target.value)}
                 >
-                  <option value="">40</option>
-                  <option value="">60</option>
-                  <option value="">80</option>
-                  <option value="">100</option>
+                  <option value="40">40%</option>
+                  <option value="60">60%</option>
+                  <option value="80">80%</option>
+                  <option value="90">100%</option>
                 </select>
               </div>
               <div className="w-[48%]">
@@ -185,31 +200,26 @@ const BuyCoverForm = (props) => {
                 <select
                   name=""
                   id=""
+                  value={familyNo}
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setFamilyNo(e.target.value)}
                 >
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-                  <option value="">5</option>
-                  <option value="">6</option>
-                  <option value="">7</option>
-                  <option value="">8</option>
-                  <option value="">9</option>
-                  <option value="">10</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
                 </select>
               </div>
             </div>
             <div className="flex flex-wrap gap-4 mt-4">
-              <div className="w-[20%]">
-                <label className="text-[16px] font-[400] leading-5">Ages</label>{" "}
-                <br />
-                <input
-                  type="text"
-                  className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
-                />
-              </div>
+        
+           
               
               {age.map((input, index) => {
                 return (
@@ -221,6 +231,7 @@ const BuyCoverForm = (props) => {
                       <br />
                       <input
                         type="text"
+                        value={input}
                         className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                         onChange={(event) => handleFormChange(index,event)}
                       />
@@ -237,6 +248,7 @@ const BuyCoverForm = (props) => {
                   </div>
                 );
               })}
+
             </div>
             <button
               className="text-[16px] font-semibold mt-2"
