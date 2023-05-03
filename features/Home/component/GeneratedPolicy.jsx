@@ -78,7 +78,7 @@ open&&
           <MakePayment getData={getData} trackIndex={getTrackedData} Amount={TrackedAmount} close={()=>setOpenPayment(false)}/>
         }
     </div>
-  )
-}
+  );
+};
 
-export default GeneratedPolicy
+export default GeneratedPolicy;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const SinglePolicy = (props) => {
     const handleClick =(props)=>{
@@ -39,7 +39,7 @@ props.AmountPaid === 0 ?
 <button onClick={()=>showClick(props)}>Make Payment</button>
 }
     </div>
-  )
-}
+  );
+};
 
-export default SinglePolicy
+export default SinglePolicy;

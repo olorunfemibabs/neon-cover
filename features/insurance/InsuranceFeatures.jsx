@@ -30,6 +30,7 @@ const InsuranceFeatures = () => {
   const getDataHandler = (data) => {
     setGetData(data);
   };
+  console.log(`it is ${getData}`);
 
   return (
     <main className="w-[100%]">
