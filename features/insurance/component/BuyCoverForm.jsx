@@ -64,7 +64,7 @@ console.log( 'aa', _insureId,
     familyHealthStatus,
     smoke,
     familyName)
-    register();
+    register?.();
   };
 
   const addFields = (e) => {
