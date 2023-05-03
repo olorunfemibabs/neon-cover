@@ -6,15 +6,13 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 import ABI from "../../../utils/ABI/ABI.json";
-import {InsuranceAddr} from "../../../utils/contractAddr"
+import { InsuranceAddr } from "../../../utils/contractAddr";
 import Loading from "@/components/Loading";
+import { toast } from "react-toastify";
 
 const BuyCoverForm = (props) => {
-
   const _insureId = Number(props.getData);
-  const [age, setAge] = useState([
-
-  ]);
+  const [age, setAge] = useState([]);
   const [percentageToCover, setPercentageToCover] = useState(0);
   const [familyNo, setFamilyNo] = useState(0);
   const [familyHealthStatus, setFamilyHealthStatus] = useState(true);
@@ -26,7 +24,7 @@ const BuyCoverForm = (props) => {
     abi: ABI,
     functionName: "registerPolicy",
     args: [
-        _insureId,
+      _insureId,
       percentageToCover,
       familyNo,
       age,
@@ -42,34 +40,38 @@ const BuyCoverForm = (props) => {
     write: register,
   } = useContractWrite(config1);
 
-  const { data: registerWaitData, isLoading: registerWaitIsLoading } =
-    useWaitForTransaction({
-      data: registerPolicyData?.hash,
+  const { data, isLoading, isError } = useWaitForTransaction({
+    hash: registerPolicyData?.hash,
 
-      onSuccess(data) {
-        console.log("Insurance registration successful: ", data);
-      },
+    onSuccess: () => {
+      // console.log("Insurance registration successful: ", data);
+      toast.success("Insurance registration successful");
+      props.close();
+    },
 
-      onError(error) {
-        console.log("Error: ", error);
-      },
-    });
+    onError(error) {
+      console.log("Error: ", error);
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-console.log( 'aa', _insureId,
-    percentageToCover,
-    familyNo,
-    age,
-    familyHealthStatus,
-    smoke,
-    familyName)
-    register?.();
+    if (
+      percentageToCover === "" ||
+      familyNo === "" ||
+      age === "" ||
+      familyHealthStatus === "" ||
+      smoke === "" ||
+      familyName === ""
+    ) {
+      toast.error("all fields required");
+    } else {
+      register?.();
+    }
   };
 
   const addFields = (e) => {
     e.preventDefault();
-   
 
     setAge([...age, ""]);
   };
@@ -78,7 +80,7 @@ console.log( 'aa', _insureId,
     let data = [...age];
     data[index] = event.target.value;
     setAge(data);
-  }
+  };
 
   const removeFields = (index) => {
     // e.preventDefault()
@@ -91,6 +93,7 @@ console.log( 'aa', _insureId,
   }, []);
   return (
     <div className="fixed top-0 w-[100%] ">
+        {registerPolicyIsLoading || isLoading && <Loading/>}
       <div className="w-[60%] ml-14 bg-white mt-10 rounded-lg">
         <div className="w-[90%] mx-auto pt-[54px] pb-[54px]">
           <div className="flex justify-between items-center">
@@ -130,7 +133,7 @@ console.log( 'aa', _insureId,
                 <select
                   name=""
                   id=""
-                //   value={}
+                  //   value={}
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                 >
                   <option value="Single">Single</option>
@@ -218,9 +221,6 @@ console.log( 'aa', _insureId,
               </div>
             </div>
             <div className="flex flex-wrap gap-4 mt-4">
-        
-           
-              
               {age.map((input, index) => {
                 return (
                   <div className="flex items-center gap-1 ">
@@ -233,7 +233,7 @@ console.log( 'aa', _insureId,
                         type="text"
                         value={input}
                         className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
-                        onChange={(event) => handleFormChange(index,event)}
+                        onChange={(event) => handleFormChange(index, event)}
                       />
                     </div>
                     <button
@@ -248,7 +248,6 @@ console.log( 'aa', _insureId,
                   </div>
                 );
               })}
-
             </div>
             <button
               className="text-[16px] font-semibold mt-2"
