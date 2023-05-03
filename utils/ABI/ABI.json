@@ -510,6 +510,7 @@
   },
   {
     "inputs": [
+      { "internalType": "uint256", "name": "_trackedindex", "type": "uint256" },
       { "internalType": "uint256", "name": "_amount", "type": "uint256" },
       { "internalType": "uint256", "name": "_insureId", "type": "uint256" },
       { "internalType": "address", "name": "_tokenDAO", "type": "address" }
