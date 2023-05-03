@@ -20,8 +20,9 @@ const { chains, provider, webSocketProvider } = configureChains(
   [
     jsonRpcProvider({
       rpc: (chain) => ({
-        http: `https://eth-sepolia.g.alchemy.com/v2/5ShvcS43c_Wrsfk_jTMZOU0sXXBKaVXP`,
-        WebSocket: `wss://eth-sepolia.g.alchemy.com/v2/5ShvcS43c_Wrsfk_jTMZOU0sXXBKaVXP`,
+        // http: `https://eth-sepolia.g.alchemy.com/v2/5ShvcS43c_Wrsfk_jTMZOU0sXXBKaVXP`,
+        http: `https://eth-sepolia.g.alchemy.com/v2/K3WQD6pWbUy8xzRs3s8OVYppcMyoCWjE`,
+        WebSocket: `wss://eth-sepolia.g.alchemy.com/v2/K3WQD6pWbUy8xzRs3s8OVYppcMyoCWjE`,
       }),
     }),
   ]

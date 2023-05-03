@@ -4,6 +4,7 @@ import BuyCoverForm from "./component/BuyCoverForm";
 import ABI from "../../utils/ABI/ABI.json";
 
 import { useContractRead } from "wagmi";
+import { InsuranceAddr } from "@/utils/contractAddr";
 // import { data } from 'autoprefixer'
 
 const InsuranceFeatures = () => {
@@ -15,7 +16,7 @@ const InsuranceFeatures = () => {
   const [policyListed, setPolicyListed] = useState([]);
 
   const { data: policies } = useContractRead({
-    address: "0x2fdfAe4285260160d2FdFC114a00Bcd61a25760A",
+    address: InsuranceAddr,
     abi: ABI,
     functionName: "returnAllPolicies",
   });
@@ -33,7 +34,7 @@ const InsuranceFeatures = () => {
   return (
     <main className="w-[100%]">
       <div className=" flex justify-between gap-8 flex-wrap mt-4">
-        {policyListed.map((policy, index) => {
+        {policies?.map((policy, index) => {
           return (
             <SingleInsureCard
               key={index}
