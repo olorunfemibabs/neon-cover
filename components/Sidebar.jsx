@@ -31,7 +31,7 @@ const Sidebar = () => {
 
   const activeMenu = useMemo(
     () => menuItems.find((menu) => menu.link === router.pathname),
-    [router.pathname]
+    [router.pathname, menuItems]
   );
 
   const handleSidebarToggle = () => {
@@ -86,7 +86,7 @@ const Sidebar = () => {
         </div>
 
         <ul className="flex flex-col items-start mt-4 px-4">
-          {menuItems.map(({ id, name, link, icon: Icon }) => {
+          {menuItems?.map(({ id, name, link, icon: Icon }) => {
             return (
               <li
                 key={id}
