@@ -1,7 +1,22 @@
 import React from 'react'
 import Claim from './Claim'
+import { useContractRead } from 'wagmi';
+import { InsuranceAddr } from '@/utils/contractAddr';
+import ABI from "../../../utils/ABI/ABI.json"
 
 const Review = () => {
+  const {
+    data: ddd,
+    isError,
+    isLoading,
+  } = useContractRead({
+    address: InsuranceAddr,
+    abi: ABI,
+    functionName: "getAllPurchase",
+    watch: true,
+  });
+
+  console.log(ddd);
   return (
     <main className='bg-[#FFFFFF] mt-4 h-[400px] rounded-lg overflow-y-scroll scrollbar-thin scrollbar-thumb-[#19192E] scrollbar-track-gray-100 scrollbar-thumb-rounded-full scrollbar-track-rounded-full'>
         <div className="w-[90%] mx-auto pt-2">

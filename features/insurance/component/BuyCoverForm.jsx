@@ -153,6 +153,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setSmoke(e.target.value)}
                 >
+                   <option value="">select</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
