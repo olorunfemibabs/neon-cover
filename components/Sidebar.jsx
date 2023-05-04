@@ -92,7 +92,7 @@ const Sidebar = () => {
                 key={id}
                 className={`cursor-pointer
                hover:text-[#FFFFFF] mt-8 duration-500 ease-in-out rounded w-full overflow-hidden whitespace-nowrap ${
-                 activeMenu.id == id
+                 activeMenu?.id == id
                    ? "text-[#FFFFFF] border-r-4 border-[#FFFFFF]"
                    : "null"
                } ${styles.trans}`}
