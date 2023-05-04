@@ -31,7 +31,7 @@ console.log("amm",index);
     abi: ABI,
     functionName: "payInsurance",
     args: [
-        Number(index-1),
+        Number(index),
          Number(amount),
          _insureId,
          NeonAddr,

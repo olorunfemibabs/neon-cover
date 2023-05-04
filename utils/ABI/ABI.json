@@ -183,7 +183,7 @@
       },
       {
         "components": [
-          { "internalType": "bool", "name": "Report", "type": "bool" },
+          { "internalType": "string", "name": "Report", "type": "string" },
           {
             "internalType": "uint256",
             "name": "AmountToClaim",
@@ -198,7 +198,8 @@
             "internalType": "uint256",
             "name": "Validateagainst",
             "type": "uint256"
-          }
+          },
+          { "internalType": "bool", "name": "Claimed", "type": "bool" }
         ],
         "internalType": "struct NewCoverage.ClaimDetail",
         "name": "detailsToclaim",
@@ -266,8 +267,9 @@
   },
   {
     "inputs": [
-      { "internalType": "bool", "name": "_report", "type": "bool" },
+      { "internalType": "string", "name": "_report", "type": "string" },
       { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "uint256", "name": "_trackedindex", "type": "uint256" },
       { "internalType": "uint256", "name": "_insureId", "type": "uint256" }
     ],
     "name": "claimHealthPolicy",
@@ -410,7 +412,7 @@
           },
           {
             "components": [
-              { "internalType": "bool", "name": "Report", "type": "bool" },
+              { "internalType": "string", "name": "Report", "type": "string" },
               {
                 "internalType": "uint256",
                 "name": "AmountToClaim",
@@ -425,7 +427,8 @@
                 "internalType": "uint256",
                 "name": "Validateagainst",
                 "type": "uint256"
-              }
+              },
+              { "internalType": "bool", "name": "Claimed", "type": "bool" }
             ],
             "internalType": "struct NewCoverage.ClaimDetail",
             "name": "detailsToclaim",
@@ -516,7 +519,7 @@
       { "internalType": "address", "name": "_tokenDAO", "type": "address" }
     ],
     "name": "payInsurance",
-    "outputs": [],
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -584,7 +587,7 @@
       },
       {
         "components": [
-          { "internalType": "bool", "name": "Report", "type": "bool" },
+          { "internalType": "string", "name": "Report", "type": "string" },
           {
             "internalType": "uint256",
             "name": "AmountToClaim",
@@ -599,7 +602,8 @@
             "internalType": "uint256",
             "name": "Validateagainst",
             "type": "uint256"
-          }
+          },
+          { "internalType": "bool", "name": "Claimed", "type": "bool" }
         ],
         "internalType": "struct NewCoverage.ClaimDetail",
         "name": "detailsToclaim",
@@ -869,7 +873,7 @@
           },
           {
             "components": [
-              { "internalType": "bool", "name": "Report", "type": "bool" },
+              { "internalType": "string", "name": "Report", "type": "string" },
               {
                 "internalType": "uint256",
                 "name": "AmountToClaim",
@@ -884,7 +888,8 @@
                 "internalType": "uint256",
                 "name": "Validateagainst",
                 "type": "uint256"
-              }
+              },
+              { "internalType": "bool", "name": "Claimed", "type": "bool" }
             ],
             "internalType": "struct NewCoverage.ClaimDetail",
             "name": "detailsToclaim",
@@ -925,16 +930,6 @@
       { "internalType": "bool", "name": "supportProposal", "type": "bool" }
     ],
     "name": "vote",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
-      { "internalType": "address", "name": "_to", "type": "address" }
-    ],
-    "name": "withdrawEther",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

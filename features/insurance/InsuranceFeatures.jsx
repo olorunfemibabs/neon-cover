@@ -5,7 +5,6 @@ import ABI from "../../utils/ABI/ABI.json";
 import { InsuranceAddr } from '../../utils/contractAddr.js';
 
 import { useContractRead } from "wagmi";
-import { InsuranceAddr } from "@/utils/contractAddr";
 // import { data } from 'autoprefixer'
 
 const InsuranceFeatures = () => {
