@@ -22,15 +22,15 @@ const { chains, provider, webSocketProvider } = configureChains(
   ]
 );
 
-// const { connectors } = getDefaultWallets({
-//   appName: "My RainbowKit App",
-//   projectId: "YOUR_PROJECT_ID",
-//   chains,
-// });
+const { connectors } = getDefaultWallets({
+  appName: "My RainbowKit App",
+  projectId: "YOUR_PROJECT_ID",
+  chains,
+});
 
 const wagmiClient = createClient({
   autoConnect: true,
-  //connectors,
+  connectors,
   webSocketProvider,
   provider,
 });
