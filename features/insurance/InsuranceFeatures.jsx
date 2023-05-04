@@ -5,12 +5,10 @@ import ABI from "../../utils/ABI/ABI.json";
 
 import { useContractRead } from "wagmi";
 import { InsuranceAddr } from "@/utils/contractAddr";
-// import { data } from 'autoprefixer'
 
 const InsuranceFeatures = () => {
   const [getData, setGetData] = useState();
-  // console.log(data);
-  console.log(getData);
+
   const [openBuyCover, setOpenBuyCover] = useState(false);
 
   const [policyListed, setPolicyListed] = useState([]);
@@ -25,17 +23,14 @@ const InsuranceFeatures = () => {
     setPolicyListed(policies);
   }, [policyListed]);
 
-  console.log(policyListed);
-
   const getDataHandler = (data) => {
     setGetData(data);
   };
-  console.log(`it is ${getData}`);
 
   return (
     <main className="w-[100%]">
       <div className=" flex justify-between gap-8 flex-wrap mt-4">
-        {policies?.map((policy, index) => {
+        {policyListed?.map((policy, index) => {
           return (
             <SingleInsureCard
               key={index}

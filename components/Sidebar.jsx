@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { SiAdguard } from "react-icons/si";
 import { MdHome } from "react-icons/md";
 import { GiPiggyBank } from "react-icons/gi";
@@ -22,7 +21,6 @@ const Sidebar = () => {
     { id: 3, name: "Invest", link: "/invest", icon: GiPiggyBank },
     { id: 4, name: "Governance", link: "/governance", icon: RiGovernmentFill },
     { id: 5, name: "Buy Token", link: "/token", icon: BsCurrencyExchange },
-    { id: 6, name: "Buy Token", link: "/daoChat", icon: BsCurrencyExchange },
   ];
 
   const router = useRouter();

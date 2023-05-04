@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { defaultAbiCoder } from "ethers/lib/utils";
 
-import single from "../styles/single.module.css";
-
 const SingleInsureCard = ({ open, ongetData, policy }) => {
-
-
   const handleClick = (policy) => {
     open();
     ongetData(policy.InsureId);

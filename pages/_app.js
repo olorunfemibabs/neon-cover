@@ -1,19 +1,13 @@
-import '@/styles/globals.css'
-import '@rainbow-me/rainbowkit/styles.css';
+import "@/styles/globals.css";
+import "@rainbow-me/rainbowkit/styles.css";
 
-import {
-  getDefaultWallets,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum,sepolia } from 'wagmi/chains';
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum, sepolia } from "wagmi/chains";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-import Layout from '@/components/Layout';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import Layout from "@/components/Layout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet, polygon, optimism, arbitrum, sepolia],
@@ -29,28 +23,27 @@ const { chains, provider, webSocketProvider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'My RainbowKit App',
-  projectId: 'YOUR_PROJECT_ID',
-  chains
+  appName: "My RainbowKit App",
+  projectId: "YOUR_PROJECT_ID",
+  chains,
 });
 
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
   webSocketProvider,
-  provider
-})
-
+  provider,
+});
 
 export default function App({ Component, pageProps }) {
   return (
-      <WagmiConfig client={wagmiClient}>
-        <RainbowKitProvider chains={chains}>
-          <Layout provider={provider}>
-            <Component {...pageProps} />
-            <ToastContainer />
-          </Layout>
-        </RainbowKitProvider>
-      </WagmiConfig>
+    <WagmiConfig client={wagmiClient}>
+      <RainbowKitProvider chains={chains}>
+        <Layout provider={provider}>
+          <Component {...pageProps} />
+          <ToastContainer />
+        </Layout>
+      </RainbowKitProvider>
+    </WagmiConfig>
   );
-};
+}
