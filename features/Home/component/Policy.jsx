@@ -20,6 +20,8 @@ const[getIndex, setGetIndex] = useState(0);
   const getDataindex = (data) => {
     setGetIndex(data);
   };
+  const dateObject = new Date(); // Create a new Date object from the date string
+  const epochTime = dateObject.getTime() / 1000; // Convert the date to epoch time (in seconds)
   const {
     data: ddd,
     isError,
@@ -38,6 +40,8 @@ const[getIndex, setGetIndex] = useState(0);
         <div className="w-[90%] mx-auto pt-2">
           <h2 className="text-[14px] font-bold mb-2"> Protection InProgress</h2>
 {ddd?.map((data)=>(
+  <>
+{data.paid && data.EndTime > epochTime &&
 
 <PolicyBought
 FamilyName={data.FamilyName}
@@ -51,6 +55,8 @@ getId={()=>getDataHandler(Number(data.InsureId
   ))}
 trackIndex ={()=>getDataindex(Number(data.Trackedindex))}
 />
+}
+  </>
 ))   
 }
         </div>

@@ -45,26 +45,32 @@ const GeneratedPolicy = () => {
       {ddd?.map((d, index) => {
         // console.log('heel',d);
         return (
-          <SinglePolicy
-            key={index}
-            FamilyName={d.FamilyName}
-            AmountPaid={Number(d.AmountPaid)}
-            PercentageToCover={Number(d.PercentageToCover)}
-            StartTime={Number(d.StartTime)}
-            EndTime={Number(d.EndTime)}
-            deductible={Number(d.deductible)}
-            CoverageAmount={Number(d.CoverageAmount)}
-            Smoke={d.Smoke}
-            Age={Number(d.detailsOfhealth.age)}
-            FamilyHealthStatus={d.detailsOfhealth.FamilyHealthStatus}
-            paid={d.paid}
-            FamilyNo={Number(d.detailsOfhealth.FamilyNo)}
-            open={() => setOpen(true)}
-            getId={() => getDataHandler(Number(d.InsureId))}
-            Trackedindex={() => getTrackedHandler(Number(d.Trackedindex))}
-            Amount={() => getAmountHandler(Number(d.AmountPaid))}
-            close={() => setOpenPayment(true)}
-          />
+          <>
+          { !d.paid &&
+            
+            <SinglePolicy
+              key={index}
+              FamilyName={d.FamilyName}
+              AmountPaid={Number(d.AmountPaid)}
+              PercentageToCover={Number(d.PercentageToCover)}
+              StartTime={Number(d.StartTime)}
+              EndTime={Number(d.EndTime)}
+              deductible={Number(d.deductible)}
+              CoverageAmount={Number(d.CoverageAmount)}
+              Smoke={d.Smoke}
+              Age={Number(d.detailsOfhealth.age)}
+              FamilyHealthStatus={d.detailsOfhealth.FamilyHealthStatus}
+              paid={d.paid}
+              FamilyNo={Number(d.detailsOfhealth.FamilyNo)}
+              open={() => setOpen(true)}
+              getId={() => getDataHandler(Number(d.InsureId))}
+              Trackedindex={() => getTrackedHandler(Number(d.Trackedindex))}
+              Amount={() => getAmountHandler(Number(d.AmountPaid))}
+              close={() => setOpenPayment(true)}
+            />
+           
+          }
+          </>
         );
       })}
       {/* <button onClick={props.open}>Get Quote</button> */}
