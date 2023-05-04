@@ -23,7 +23,11 @@ const Review = () => {
 
         <h2 className="text-[14px] font-bold mb-2"> Review Cover Claim</h2>
 
-        <Claim/>
+      {ddd.map((data)=>(
+
+        <Claim key={data.Trackedindex}  FamilyName={data.FamilyName} ValidateFor={Number(data.detailsToclaim.ValidateFor)} Validateagainst={Number(data.detailsToclaim.Validateagainst)} AmountToClaim={Number(data.detailsToclaim.AmountToClaim)}  />
+      )) 
+      }
         </div>
     </main>
   )
