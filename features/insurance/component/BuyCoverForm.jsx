@@ -8,6 +8,7 @@ import {
 import ABI from "../../../utils/ABI/ABI.json";
 import { InsuranceAddr } from "../../../utils/contractAddr";
 import Loading from "@/components/Loading";
+import { toast } from "react-toastify";
 
 const BuyCoverForm = (props) => {
   const _insureId = Number(props.getData);
@@ -41,14 +42,14 @@ const BuyCoverForm = (props) => {
 
   const { data: registerWaitData, isLoading: registerWaitIsLoading } =
     useWaitForTransaction({
-      data: registerPolicyData?.hash,
+      hash: registerPolicyData?.hash,
 
       onSuccess(data) {
-        console.log("Insurance registration successful: ", data);
+        toast.success("Insurance registration successful");
       },
 
       onError(error) {
-        console.log("Error: ", error);
+        toast.error("Error: ", error);
       },
     });
 
@@ -132,6 +133,7 @@ const BuyCoverForm = (props) => {
                   //   value={}
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                 >
+                   <option value="">select</option>
                   <option value="Single">Single</option>
                   <option value="Nuclear Family">Nuclear Family</option>
                   <option value="Extended Family">Extended Family</option>
@@ -151,6 +153,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setSmoke(e.target.value)}
                 >
+                   <option value="">select</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
@@ -167,6 +170,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setFamilyHealthStatus(e.target.value)}
                 >
+                   <option value="">select</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
@@ -185,6 +189,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setPercentageToCover(e.target.value)}
                 >
+                   <option value="">select</option>
                   <option value="40">40%</option>
                   <option value="60">60%</option>
                   <option value="80">80%</option>
@@ -203,6 +208,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setFamilyNo(e.target.value)}
                 >
+                  <option value="">select</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>

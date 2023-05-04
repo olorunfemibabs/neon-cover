@@ -16,6 +16,8 @@ const SinglePolicy = (props) => {
   };
   return (
     <div className="border-[1px] rounded-xl w-[40%] p-6 shadow-xl mb-2">
+     { !props.paid ? 
+     <>
       <h2 className="text-[14px] leading-5 font-medium text-center text-[#6e6e72] flex font-poppins">
         Family Name:{" "}
         <span className="text-[#1A1941] text-[20px] ml-1 font-semibold">
@@ -103,6 +105,13 @@ const SinglePolicy = (props) => {
           Make Payment
         </button>
       )}
+        </>
+        :
+      <p className="">
+
+          No New Policy Generated
+      </p>
+    }
     </div>
   );
 };

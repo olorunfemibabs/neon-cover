@@ -20,7 +20,7 @@ const {address} = useAccount();
   const _insureId = props.getData;
   const index = props.trackIndex;
   const amount = props.Amount;
-console.log("amm",index);
+// console.log("amm",index);
 
 //   const [startTime, setStartTime] = useState(0);
 //   const [endTime, setEndTime ] = useState(0);
@@ -31,7 +31,7 @@ console.log("amm",index);
     abi: ABI,
     functionName: "payInsurance",
     args: [
-        Number(index-1),
+        Number(index),
          Number(amount),
          _insureId,
          NeonAddr,
@@ -95,20 +95,17 @@ console.log("amm",index);
 
   const handleSubmit = (e) => {
       e.preventDefault();
-console.log( Number(index-1),
-amount,
-_insureId,
-NeonAddr)
+
     if(  
-        Number(index-1),
-        amount,
-        _insureId,
-        NeonAddr){
+        Number(index) ==="",
+        amount ==="",
+        _insureId==="",
+        NeonAddr===""){
             toast.error("All fields required")
         }
 
 
-    register();
+    register?.();
 
    
   };

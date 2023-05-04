@@ -19,6 +19,12 @@ const GenerateQuote = (props) => {
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime ] = useState(0);
   const [amount, setAmount] = useState(0)
+ 
+const dateObject = new Date(startTime); // Create a new Date object from the date string
+const startepochTime = dateObject.getTime() / 1000; // Convert the date to epoch time (in seconds)
+const enddateObject = new Date(endTime); // Create a new Date object from the date string
+const endepochTime = enddateObject.getTime() / 1000; // Convert the date to epoch time (in seconds)
+
 
   const { config } = usePrepareContractWrite({
     address: InsuranceAddr,
@@ -26,10 +32,10 @@ const GenerateQuote = (props) => {
     functionName: "generateHealthPolicy",
     args: [
         _insureId,
-        startTime,
-        endTime,
+        startepochTime,
+        endepochTime,
         Number(amount),
-        Number(index-1)
+        Number(index)
 
     ],
   });
@@ -104,7 +110,7 @@ useEffect(()=>{
                 </label>{" "}
                 <br />
                 <input
-                  type="Number"
+                  type="date"
                   value={startTime}
                   placeholder="When you waant your Insurance to start in weeks"
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
@@ -117,7 +123,7 @@ useEffect(()=>{
                 </label>{" "}
                 <br />
                 <input
-                  type="Number"
+                  type="date"
                   value={endTime}
                   placeholder="When you waant your Insurance to End in weeks"
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"

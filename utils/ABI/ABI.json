@@ -183,7 +183,7 @@
       },
       {
         "components": [
-          { "internalType": "bool", "name": "Report", "type": "bool" },
+          { "internalType": "string", "name": "Report", "type": "string" },
           {
             "internalType": "uint256",
             "name": "AmountToClaim",
@@ -266,8 +266,9 @@
   },
   {
     "inputs": [
-      { "internalType": "bool", "name": "_report", "type": "bool" },
+      { "internalType": "string", "name": "_report", "type": "string" },
       { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "uint256", "name": "_trackedindex", "type": "uint256" },
       { "internalType": "uint256", "name": "_insureId", "type": "uint256" }
     ],
     "name": "claimHealthPolicy",
@@ -410,7 +411,7 @@
           },
           {
             "components": [
-              { "internalType": "bool", "name": "Report", "type": "bool" },
+              { "internalType": "string", "name": "Report", "type": "string" },
               {
                 "internalType": "uint256",
                 "name": "AmountToClaim",
@@ -516,7 +517,7 @@
       { "internalType": "address", "name": "_tokenDAO", "type": "address" }
     ],
     "name": "payInsurance",
-    "outputs": [],
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -584,7 +585,7 @@
       },
       {
         "components": [
-          { "internalType": "bool", "name": "Report", "type": "bool" },
+          { "internalType": "string", "name": "Report", "type": "string" },
           {
             "internalType": "uint256",
             "name": "AmountToClaim",
@@ -869,7 +870,7 @@
           },
           {
             "components": [
-              { "internalType": "bool", "name": "Report", "type": "bool" },
+              { "internalType": "string", "name": "Report", "type": "string" },
               {
                 "internalType": "uint256",
                 "name": "AmountToClaim",
