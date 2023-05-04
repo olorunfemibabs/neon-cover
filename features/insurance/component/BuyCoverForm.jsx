@@ -40,18 +40,22 @@ const BuyCoverForm = (props) => {
     write: register,
   } = useContractWrite(config1);
 
-  const { data: registerWaitData, isLoading: registerWaitIsLoading } =
-    useWaitForTransaction({
-      hash: registerPolicyData?.hash,
+  const {
+    data: registerWaitData,
+    isLoading: registerWaitIsLoading,
+    isError,
+    isSuccess,
+  } = useWaitForTransaction({
+    hash: registerPolicyData?.hash,
 
-      onSuccess(data) {
-        toast.success("Insurance registration successful");
-      },
+    onSuccess: () => {
+      toast.success("Insurance registration successful");
+    },
 
-      onError(error) {
-        toast.error("Error: ", error);
-      },
-    });
+    onError(error) {
+      toast.error("Error: ", error);
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,10 +91,23 @@ const BuyCoverForm = (props) => {
     setAge(data);
   };
   useEffect(() => {
+    if (isError) {
+      toast.error("Transaction error try again");
+    }
+
+    if (isSuccess) {
+      setAge([]);
+      setPercentageToCover(0);
+      setFamilyNo(0);
+      setFamilyHealthStatus(true);
+      setSmoke(true);
+      setFamilyName("");
+    }
     setAge([""]); // Add initial email when component mounts
-  }, []);
+  }, [isError, isSuccess]);
   return (
     <div className="fixed top-0 w-[100%] ">
+      {registerWaitIsLoading || (registerPolicyIsLoading && <Loading />)}
       <div className="w-[60%] ml-14 bg-white mt-10 rounded-lg">
         <div className="w-[90%] mx-auto pt-[54px] pb-[54px]">
           <div className="flex justify-between items-center">
@@ -133,7 +150,7 @@ const BuyCoverForm = (props) => {
                   //   value={}
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                 >
-                   <option value="">select</option>
+                  <option value="">select</option>
                   <option value="Single">Single</option>
                   <option value="Nuclear Family">Nuclear Family</option>
                   <option value="Extended Family">Extended Family</option>
@@ -153,7 +170,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setSmoke(e.target.value)}
                 >
-                   <option value="">select</option>
+                  <option value="">select</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
@@ -170,7 +187,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setFamilyHealthStatus(e.target.value)}
                 >
-                   <option value="">select</option>
+                  <option value="">select</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
@@ -189,7 +206,7 @@ const BuyCoverForm = (props) => {
                   className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                   onChange={(e) => setPercentageToCover(e.target.value)}
                 >
-                   <option value="">select</option>
+                  <option value="">select</option>
                   <option value="40">40%</option>
                   <option value="60">60%</option>
                   <option value="80">80%</option>
