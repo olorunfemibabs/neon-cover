@@ -43,15 +43,15 @@ const CreateCover = (props) => {
 
   const addFields = (e) => {
     e.preventDefault();
-    let newfield = {detail: "" };
+    // let newfield = {detail: "" };
 
-    setAgreement([...agreement, newfield]);
+    setAgreement([...agreement, ""]);
   };
 
   const handleFormChange = (index, event) => {
 
     let data = [...agreement];
-    data[index][event.target.name] = event.target.value;
+    data[index]= event.target.value;
     setAgreement(data);
  }
 
@@ -81,7 +81,9 @@ const CreateCover = (props) => {
 
 if(isError){
     toast.error("Transaction error try again")
+
 }
+setAgreement([""])
   },[ isError])
   return (
     <div className="fixed top-0 w-[100%] ">
@@ -132,7 +134,7 @@ if(isError){
             </div>
             <div className="flex flex-col justify-between mt-5">
             
-              {agreement.length > 0 && (<>
+              {/* {agreement.length > 0 && (<> */}
               
               {agreement.map((input, index) => {
                 return (
@@ -144,7 +146,7 @@ if(isError){
                       <br />
                       <input
                         type="text"
-                        // value={input.detail}
+                        value={input}
                       onChange={(event) => handleFormChange(index, event)}
                         className="h-[50px] w-[100%] border-[1px] border-[#E5E5E5] rounded-lg bg-[#F9F9F9] outline-[#1A1941]  mt-2"
                       />
@@ -161,7 +163,7 @@ if(isError){
                   </div>
                 );
               })}
-              </>)}
+              {/* </>)} */}
 
               
 

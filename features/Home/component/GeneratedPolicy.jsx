@@ -37,7 +37,7 @@ const GeneratedPolicy = () => {
     // cacheOnBlock: true,
   });
 
-  console.log(ddd);
+  
   useEffect(() => {}, []);
 
   return (
@@ -57,6 +57,7 @@ const GeneratedPolicy = () => {
             Smoke={d.Smoke}
             Age={Number(d.detailsOfhealth.age)}
             FamilyHealthStatus={d.detailsOfhealth.FamilyHealthStatus}
+            paid={d.paid}
             FamilyNo={Number(d.detailsOfhealth.FamilyNo)}
             open={() => setOpen(true)}
             getId={() => getDataHandler(Number(d.InsureId))}

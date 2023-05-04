@@ -29,7 +29,7 @@ const GenerateQuote = (props) => {
         startTime,
         endTime,
         Number(amount),
-        Number(index-1)
+        Number(index)
 
     ],
   });
