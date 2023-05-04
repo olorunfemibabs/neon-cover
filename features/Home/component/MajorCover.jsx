@@ -8,7 +8,7 @@ const MajorCover = () => {
   return (
     <main className="mt-2 font-poppins">
       <section className="flex justify-between flex-wrap">
-        <div className="w-[24%] h-[120px] text-[#1A1941] bg-[#FFFF] border-[#FFFF] border-[1px]  rounded-lg shadow-xl ">
+        <div className="w-[24%] h-[120px] text-[#1A1941] bg-[#FFFF] border-[#FFFF] border-[1px]  rounded-lg ">
           <div className="w-[96%]  mx-auto pt-4 flex items-center ">
             <div className="w-[40px] h-[40px] flex items-center justify-center bg-[#1A1941] rounded-full">
               <BiCheckShield size={20} className="text-[#FFFFFF]" />
@@ -24,7 +24,7 @@ const MajorCover = () => {
             </div>
           </div>
         </div>
-        <div className="w-[24%] h-[120px] text-[#1A1941] bg-[#FFFF] border-[#FFFF] border-[1px]  rounded-lg shadow-xl ">
+        <div className="w-[24%] h-[120px] text-[#1A1941] bg-[#FFFF] border-[#FFFF] border-[1px]  rounded-lg ">
           <div className="w-[96%]  mx-auto pt-4 flex items-center  ">
             <div className="w-[40px] h-[40px] flex items-center justify-center bg-[#1A1941] rounded-full">
               <FaHandHoldingUsd size={20} className="text-[#FFFFFF]" />
@@ -40,7 +40,7 @@ const MajorCover = () => {
             </div>
           </div>
         </div>
-        <div className="w-[24%] h-[120px] text-[#1A1941] bg-[#FFFF] border-[#FFFF] border-[1px]  rounded-lg shadow-xl ">
+        <div className="w-[24%] h-[120px] text-[#1A1941] bg-[#FFFF] border-[#FFFF] border-[1px]  rounded-lg ">
           <div className="w-[96%]  mx-auto pt-4 flex items-center  ">
             <div className="w-[40px] h-[40px] flex items-center justify-center bg-[#1A1941] rounded-full">
               <MdAttachMoney size={20} className="text-[#FFFF]" />
@@ -53,7 +53,7 @@ const MajorCover = () => {
             </div>
           </div>
         </div>
-        <div className="w-[24%] h-[120px] text-[#1A1941] bg-[#FFFF] border-[#FFFF] border-[1px]  rounded-lg shadow-xl ">
+        <div className="w-[24%] h-[120px] text-[#1A1941] bg-[#FFFF] border-[#FFFF] border-[1px]  rounded-lg">
           <div className="w-[96%]  mx-auto pt-4 flex items-center  ">
             <div className="w-[40px] h-[40px] flex items-center justify-center bg-[#1A1941] rounded-full">
               <BiMoney size={20} className="text-[#FFFFFF]" />
