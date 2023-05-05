@@ -58,7 +58,7 @@ const GeneratedPolicy = () => {
               deductible={Number(d.deductible)}
               CoverageAmount={Number(d.CoverageAmount)}
               Smoke={d.Smoke}
-              Age={Number(d.detailsOfhealth.age)}
+              // Age={Number(d.detailsOfhealth.age[0])}
               FamilyHealthStatus={d.detailsOfhealth.FamilyHealthStatus}
               paid={d.paid}
               FamilyNo={Number(d.detailsOfhealth.FamilyNo)}
