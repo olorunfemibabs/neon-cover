@@ -6,11 +6,11 @@ import ABI from "../../../utils/ABI/ABI.json"
 const Claim = (props) => {
   
   const { config } = usePrepareContractWrite({
-    // mode: 'recklesslyUnprepared',
+    mode: 'recklesslyUnprepared',
     address: InsuranceAddr,
     abi: ABI,
     functionName: 'validateClaim',
-    args:[props.InsureId,props.address, true],
+    args:[props.InsureId, props.index, props.address, true],
     watch: true,
   })
   const { data:coverData, isLoading:coverIsLoading, write } = useContractWrite(config);
@@ -18,11 +18,33 @@ const Claim = (props) => {
   const { data, isError, isLoading } = useWaitForTransaction({
     hash: coverData?.hash,
     onSuccess:()=>{
-        toast.success("")
+        toast.success("Vote Successful")
         
       
     }
   })
+  const { config:config1 } = usePrepareContractWrite({
+    mode: 'recklesslyUnprepared',
+    address: InsuranceAddr,
+    abi: ABI,
+    functionName: 'validateClaim',
+    args:[props.InsureId, props.index, props.address, false],
+    watch: true,
+  })
+  const { data:voteData, isLoading:voteIsLoading, write:voteAgainst } = useContractWrite(config1);
+
+  const { data:voteAgainstData, isError:voteIsError, isLoading:voteWaitIsLoading } = useWaitForTransaction({
+    hash: voteData?.hash,
+    onSuccess:()=>{
+        toast.success("Vote Successful")
+        
+      
+    }
+  })
+
+
+
+  
   return (
     <div className='w-[100%] pb-4 border-[1px] rounded-lg'>
         <div className=" w-[96%] flex items-center pt-4 mx-auto">
@@ -38,7 +60,7 @@ const Claim = (props) => {
             </div>
             <div className="w-[18%] flex gap-2">
                 <button onClick={()=>write()} className='bg-[#19192E] text-[12px] text-[#FFFFFF] font-bold w-[100px] h-[40px] rounded-lg'>Votes for</button>
-                <button className='bg-[#EE2339] text-[12px] text-[#FFFFFF] font-bold w-[100px] h-[40px] rounded-lg'>Reject</button>
+                <button onClick={()=>voteAgainst?.()}className='bg-[#EE2339] text-[12px] text-[#FFFFFF] font-bold w-[100px] h-[40px] rounded-lg'>Reject</button>
             </div>
         </div>
         </div>

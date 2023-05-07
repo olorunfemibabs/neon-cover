@@ -26,14 +26,15 @@ const Review = () => {
       {ddd?.map((data)=>(
  <>
 {
-  data.detailsToclaim.AmountToClaim > 0 ? 
+  data.detailsToclaim.AmountToClaim > 0 &&
 <Claim key={data.Trackedindex}  FamilyName={data.FamilyName} ValidateFor={Number(data.detailsToclaim.ValidateFor)} Validateagainst={Number(data.detailsToclaim.Validateagainst)} AmountToClaim={Number(data.detailsToclaim.AmountToClaim)} Report={data.detailsToclaim.Report} 
 InsureId={Number(data.InsureId)}
 address={data.Insurer}
+index={Number(data.Trackedindex)}
 PercentageToCover={Number(data.PercentageToCover)}
 />
-:
-null
+// :
+// null
 }
 </>
       )) 
