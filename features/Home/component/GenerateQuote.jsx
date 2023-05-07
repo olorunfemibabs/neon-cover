@@ -6,37 +6,34 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 import ABI from "../../../utils/ABI/ABI.json";
-import {InsuranceAddr} from "../../../utils/contractAddr"
+import { InsuranceAddr } from "../../../utils/contractAddr";
 import Loading from "@/components/Loading";
 import { toast } from "react-toastify";
 
 const GenerateQuote = (props) => {
-
   const _insureId = props.getData;
   const index = props.trackIndex;
-// console.log(index);
+  // console.log(index);
 
   const [startTime, setStartTime] = useState(0);
-  const [endTime, setEndTime ] = useState(0);
-  const [amount, setAmount] = useState(0)
- 
-const dateObject = new Date(startTime); // Create a new Date object from the date string
-const startepochTime = dateObject.getTime() / 1000; // Convert the date to epoch time (in seconds)
-const enddateObject = new Date(endTime); // Create a new Date object from the date string
-const endepochTime = enddateObject.getTime() / 1000; // Convert the date to epoch time (in seconds)
+  const [endTime, setEndTime] = useState(0);
+  const [amount, setAmount] = useState(0);
 
+  const dateObject = new Date(startTime); // Create a new Date object from the date string
+  const startepochTime = dateObject.getTime() / 1000; // Convert the date to epoch time (in seconds)
+  const enddateObject = new Date(endTime); // Create a new Date object from the date string
+  const endepochTime = enddateObject.getTime() / 1000; // Convert the date to epoch time (in seconds)
 
   const { config } = usePrepareContractWrite({
     address: InsuranceAddr,
     abi: ABI,
     functionName: "generateHealthPolicy",
     args: [
-        _insureId,
-        startepochTime,
-        endepochTime,
-        Number(amount),
-        Number(index)
-
+      _insureId,
+      startepochTime,
+      endepochTime,
+      Number(amount),
+      Number(index),
     ],
   });
 
@@ -46,45 +43,46 @@ const endepochTime = enddateObject.getTime() / 1000; // Convert the date to epoc
     write: register,
   } = useContractWrite(config);
 
-  const { data: registerWaitData, isLoading: registerWaitIsLoading, isError } =
-    useWaitForTransaction({
-      hash: registerPolicyData?.hash,
-    onSuccess:()=> {
-        toast.success("Insurance registration successful");
-      },
+  const {
+    data: registerWaitData,
+    isLoading: registerWaitIsLoading,
+    isError,
+    isSuccess,
+  } = useWaitForTransaction({
+    hash: registerPolicyData?.hash,
+    onSuccess: () => {
+      toast.success("Insurance registration successful");
+    },
 
-      onError(error) {
-        console.log("Error: ", error);
-      },
-    });
+    onError(error) {
+      console.log("Error: ", error);
+    },
+  });
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log('llo',_insureId,
-        startTime,
-        endTime,
-        Number(amount))
-    if(  
-        startTime=="",
-        endTime=="",
-        amount==""){
-            toast.error("All fields required")
-        }
-
+    e.preventDefault();
+    console.log("llo", _insureId, startTime, endTime, Number(amount));
+    if ((startTime == "", endTime == "", amount == "")) {
+      toast.error("All fields required");
+    }
 
     register();
-
-   
   };
-useEffect(()=>{
-    if(isError){
-        toast.error("Error occured please try again")
+  useEffect(() => {
+    if (isError) {
+      toast.error("Error occured please try again");
     }
-},[isError])
+
+    if (isSuccess) {
+      setStartTime(0);
+      setEndTime(0);
+      setAmount(0);
+    }
+  }, [isError, isSuccess]);
 
   return (
     <div className="fixed top-0 w-[100%] ">
-       { registerWaitIsLoading || registerPolicyIsLoading && <Loading/>}
+      {registerWaitIsLoading || (registerPolicyIsLoading && <Loading />)}
       <div className="w-[60%] ml-14 bg-white mt-10 rounded-lg">
         <div className="w-[90%] mx-auto pt-[54px] pb-[54px]">
           <div className="flex justify-between items-center">
@@ -151,9 +149,7 @@ useEffect(()=>{
                   <option value="10000">$10000</option>
                 </select>
               </div>
-
             </div>
-        
 
             <button className="text-[16px] font-bold w-[100%] h-[50px] bg-[#1A1941] text-[#FFFFFF] rounded-lg mt-4">
               Submit
